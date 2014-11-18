@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cc.protea.mathlib</groupId>
+  <artifactId>mathlib</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mathlib</name>
+  <url>http://protea.cc/projects/</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.springframework.build</groupId>
+        <artifactId>aws-maven</artifactId>
+        <version>5.0.0.RELEASE</version>
+      </extension>
+    </extensions>
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>aws-release</id>
+      <name>AWS Release Repository</name>
+      <url>s3://protea-repo/release</url>
+    </repository>
+    <snapshotRepository>
+      <id>aws-snapshot</id>
+      <name>AWS Snapshot Repository</name>
+      <url>s3://protea-repo/snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>
