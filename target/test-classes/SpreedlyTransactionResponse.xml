@@ -1,0 +1,56 @@
+
+<transaction>
+	<amount type="integer">80</amount>
+	<on_test_gateway type="boolean">true</on_test_gateway>
+	<created_at type="dateTime">2014-11-11T01:08:44Z</created_at>
+	<updated_at type="dateTime">2014-11-11T01:08:44Z</updated_at>
+	<currency_code>USD</currency_code>
+	<succeeded type="boolean">true</succeeded>
+	<state>succeeded</state>
+	<token>1vcqQrU0d9f4NB5vdnx5wsoaAss</token>
+	<transaction_type>PurchaseViaReference</transaction_type>
+	<order_id nil="true" />
+	<ip nil="true" />
+	<description nil="true" />
+	<email nil="true" />
+	<merchant_name_descriptor nil="true" />
+	<merchant_location_descriptor nil="true" />
+	<gateway_specific_fields>
+		<paypal>
+			<recurring>Y</recurring>
+		</paypal>
+	</gateway_specific_fields>
+	<gateway_specific_response_fields>
+		<paypal>
+			<payer>wax@example.com</payer>
+			<first_name>Waxillium</first_name>
+			<last_name>Ladrian</last_name>
+			<street1>3911 Main Street</street1>
+			<street2>Apartment 3</street2>
+			<city_name>Wanaque</city_name>
+			<state_or_province>NJ</state_or_province>
+			<postal_code>28592-8851</postal_code>
+			<country>US</country>
+		</paypal>
+	</gateway_specific_response_fields>
+	<gateway_transaction_id>61</gateway_transaction_id>
+	<message key="messages.transaction_succeeded">Succeeded!</message>
+	<gateway_token>8XJtbE1p4NTZ6fFqwwn0GrkjEmW</gateway_token>
+	<response>
+		<success type="boolean">true</success>
+		<message>Successful purchase</message>
+		<avs_code nil="true" />
+		<avs_message nil="true" />
+		<cvv_code nil="true" />
+		<cvv_message nil="true" />
+		<pending type="boolean">false</pending>
+		<error_code></error_code>
+		<error_detail nil="true" />
+		<cancelled type="boolean">false</cancelled>
+		<created_at type="dateTime">2014-11-11T01:08:44Z</created_at>
+		<updated_at type="dateTime">2014-11-11T01:08:44Z</updated_at>
+	</response>
+	<reference_token>KL7jgc4iy3MSMXfmqUNLVSHXmxN</reference_token>
+	<api_urls>
+	</api_urls>
+</transaction>
