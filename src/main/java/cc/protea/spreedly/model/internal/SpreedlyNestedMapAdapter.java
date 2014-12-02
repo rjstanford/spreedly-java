@@ -16,7 +16,7 @@ import org.w3c.dom.NodeList;
  * @author rjstanford
  *
  */
-public class SpreedlyRandomMapAdapter extends XmlAdapter<Object, Map<String, String>> {
+public class SpreedlyNestedMapAdapter extends XmlAdapter<Object, Map<String, String>> {
 
 	@Override
 	public Map<String, String> unmarshal(final Object domTree) throws Exception {

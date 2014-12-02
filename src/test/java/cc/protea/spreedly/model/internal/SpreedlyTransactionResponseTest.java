@@ -21,7 +21,7 @@ import cc.protea.spreedly.model.SpreedlyTransactionResponse;
 
 public class SpreedlyTransactionResponseTest {
 
-	SpreedlyRandomMapAdapter adapter;
+	SpreedlyNestedMapAdapter adapter;
 	JAXBContext context;
     Unmarshaller unmarshaller;
     File xml;
@@ -30,7 +30,7 @@ public class SpreedlyTransactionResponseTest {
 	public void before() throws JAXBException, URISyntaxException {
 		context = JAXBContext.newInstance(SpreedlyTransactionResponse.class);
 		unmarshaller = context.createUnmarshaller();
-		adapter = new SpreedlyRandomMapAdapter();
+		adapter = new SpreedlyNestedMapAdapter();
 		URL url = getClass().getResource("/SpreedlyTransactionResponse.xml");
 		xml = new File(url.toURI());
 	}

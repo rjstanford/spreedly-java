@@ -1,9 +1,17 @@
 package cc.protea.spreedly.model;
 
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType
+@XmlEnum(String.class)
 public enum SpreedlyCardType {
-	visa,
-	master,
-	american_express,
-	discover,
-	dankort
+
+	@XmlEnumValue("visa") VISA,
+	@XmlEnumValue("master") MASTERCARD,
+	@XmlEnumValue("american_express") AMEX,
+	@XmlEnumValue("discover") DISCOVER,
+	@XmlEnumValue("dankort") DANKORT
+
 }
