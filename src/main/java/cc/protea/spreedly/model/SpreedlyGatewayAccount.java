@@ -31,5 +31,72 @@ public class SpreedlyGatewayAccount {
 	public boolean redacted;
 	@XmlElement(name = "created_at") public Date createdOn;
 	@XmlElement(name = "updated_at") public Date updatedOn;
+	public String getToken() {
+		return token;
+	}
+	public void setToken(final String token) {
+		this.token = token;
+	}
+	public String getGatewayType() {
+		return gatewayType;
+	}
+	public void setGatewayType(final String gatewayType) {
+		this.gatewayType = gatewayType;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(final String name) {
+		this.name = name;
+	}
+	public SpreedlyGatewayCharacteristics getCharacteristics() {
+		return characteristics;
+	}
+	public void setCharacteristics(final SpreedlyGatewayCharacteristics characteristics) {
+		this.characteristics = characteristics;
+	}
+	public List<SpreedlyGatewayCredential> getCredentials() {
+		return credentials;
+	}
+	public void setCredentials(final List<SpreedlyGatewayCredential> credentials) {
+		this.credentials = credentials;
+	}
+	public List<String> getGatewaySpecificFields() {
+		return gatewaySpecificFields;
+	}
+	public void setGatewaySpecificFields(final List<String> gatewaySpecificFields) {
+		this.gatewaySpecificFields = gatewaySpecificFields;
+	}
+	public List<SpreedlyGatewayPaymentMethod> getPaymentMethods() {
+		return paymentMethods;
+	}
+	public void setPaymentMethods(final List<SpreedlyGatewayPaymentMethod> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+	public SpreedlyGatewayAccountState getState() {
+		return state;
+	}
+	public void setState(final SpreedlyGatewayAccountState state) {
+		this.state = state;
+	}
+	public boolean isRedacted() {
+		return redacted;
+	}
+	public void setRedacted(final boolean redacted) {
+		this.redacted = redacted;
+	}
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(final Date createdOn) {
+		this.createdOn = createdOn;
+	}
+	public Date getUpdatedOn() {
+		return updatedOn;
+	}
+	public void setUpdatedOn(final Date updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+
 
 }

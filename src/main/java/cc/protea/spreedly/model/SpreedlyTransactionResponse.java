@@ -10,11 +10,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
 import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
 
 @XmlRootElement(name = "transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SpreedlyTransactionResponse {
+public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 
 	/**
 	 * Any positive whole number, for example 1234 = $12.34.
@@ -77,7 +78,7 @@ public class SpreedlyTransactionResponse {
 	 */
 	@XmlElement(name = "merchant_location_descriptor") public String merchantLocationDescriptor;
 	/**
-	 * Fields that a gateway defines for a specific purpose but is not implemented by all gateways.
+	 * Fields that a gateway defines for a specific purpose but are not implemented by all gateways.
 	 */
 	@XmlJavaTypeAdapter(SpreedlyNestedMapAdapter.class)
 	@XmlElement(name = "gateway_specific_fields") public Map<String, String> gatewaySpecificFields = new HashMap<String, String>();
@@ -92,11 +93,27 @@ public class SpreedlyTransactionResponse {
 	@XmlElement(name = "payment_method") public SpreedlyPaymentMethod paymentMethod;
 	@XmlElement(name = "basis_payment_method") public SpreedlyPaymentMethod basisPaymentMethod;
 	@XmlElement(name = "api_urls") public SpreedlyApiURLs apiUrls;
+	/**
+	 * The callbackUrl specified when the transaction was created
+	 */
 	@XmlElement(name = "callback_url") public String callbackUrl;
+	/**
+	 * The redirectUrl specified when the transaction was created
+	 */
 	@XmlElement(name = "redirect_url") public String redirectUrl;
+	/**
+	 * If a checkoutUrl is returned, you need to redirect the customer's browser to it. Doing so will land the customer on the offsite page they will use to authorize payment.
+	 * See https://docs.spreedly.com/guides/3dsecure/ for more information.
+	 */
 	@XmlElement(name = "checkout_url") public String checkoutUrl;
+	/**
+	 * If a checkoutForm is returned, you need to render and submit it. You can also parse it (it is always a valid XHTML fragment) and build your own form with the same action and input fields.
+	 * See https://docs.spreedly.com/guides/3dsecure/ for more information.
+	 */
 	@XmlElement(name = "checkout_form") public String checkoutForm;
-	@XmlElement(name = "setup_response") public SpreedlySetupResponse setupResponse;
+	@XmlElement(name = "setup_response") public SpreedlyTransactionResponseDetails setupResponse;
+	@XmlElement(name = "redirect_response") public SpreedlyTransactionResponseDetails redirectResponse;
+	@XmlElement(name = "callback_response") public SpreedlyTransactionResponseDetails callbackResponse;
 
 	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
@@ -401,43 +418,98 @@ public class SpreedlyTransactionResponse {
 		return this;
 	}
 
+	/**
+	 * @return the callbackUrl specified when the transaction was created
+	 */
 	public String getCallbackUrl() {
 		return callbackUrl;
 	}
+	/**
+	 * @param callbackUrl the callbackUrl specified when the transaction was created
+	 */
 	public SpreedlyTransactionResponse setCallbackUrl(final String callbackUrl) {
 		this.callbackUrl = callbackUrl;
 		return this;
 	}
 
+	/**
+	 * @return the redirectUrl specified when the transaction was created
+	 */
 	public String getRedirectUrl() {
 		return redirectUrl;
 	}
+	/**
+	 * @param redirectUrl the redirectUrl specified when the transaction was created
+	 */
 	public SpreedlyTransactionResponse setRedirectUrl(final String redirectUrl) {
 		this.redirectUrl = redirectUrl;
 		return this;
 	}
 
+	/**
+	 * If a checkoutUrl is returned, you need to redirect the customer's browser to it. Doing so will land the customer on the offsite
+	 * page they will use to authorize payment.
+	 * @return the checkout URL
+	 */
 	public String getCheckoutUrl() {
 		return checkoutUrl;
 	}
+	/**
+	 * If a checkoutUrl is returned, you need to redirect the customer's browser to it. Doing so will land the customer on the offsite
+	 * page they will use to authorize payment.
+	 * @param checkoutUrl
+	 */
 	public SpreedlyTransactionResponse setCheckoutUrl(final String checkoutUrl) {
 		this.checkoutUrl = checkoutUrl;
 		return this;
 	}
 
+	/**
+	 * If a checkoutForm is returned, you need to render and submit it. You can also parse it (it is always a valid XHTML fragment) and
+	 * build your own form with the same action and input fields.
+	 * See https://docs.spreedly.com/guides/3dsecure/ for more information.
+	 * @return the checkoutForm HTML code
+	 */
 	public String getCheckoutForm() {
 		return checkoutForm;
 	}
+	/**
+	 * If a checkoutForm is returned, you need to render and submit it. You can also parse it (it is always a valid XHTML fragment) and
+	 * build your own form with the same action and input fields.
+	 * See https://docs.spreedly.com/guides/3dsecure/ for more information.
+	 * @param checkoutForm
+	 */
 	public SpreedlyTransactionResponse setCheckoutForm(final String checkoutForm) {
 		this.checkoutForm = checkoutForm;
 		return this;
 	}
 
-	public SpreedlySetupResponse getSetupResponse() {
+	public SpreedlyTransactionResponseDetails getSetupResponse() {
 		return setupResponse;
 	}
-	public SpreedlyTransactionResponse setSetupResponse(final SpreedlySetupResponse setupResponse) {
+	public SpreedlyTransactionResponse setSetupResponse(final SpreedlyTransactionResponseDetails setupResponse) {
 		this.setupResponse = setupResponse;
 		return this;
+	}
+	public SpreedlyTransactionResponseDetails getRedirectResponse() {
+		return redirectResponse;
+	}
+	public SpreedlyTransactionResponse setRedirectResponse(final SpreedlyTransactionResponseDetails redirectResponse) {
+		this.redirectResponse = redirectResponse;
+		return this;
+	}
+	public SpreedlyTransactionResponseDetails getCallbackResponse() {
+		return callbackResponse;
+	}
+	public SpreedlyTransactionResponse setCallbackResponse(final SpreedlyTransactionResponseDetails callbackResponse) {
+		this.callbackResponse = callbackResponse;
+		return this;
+	}
+
+	public void setError(final String key, final String error) {
+		message = new SpreedlyMessage();
+		message.key = key;
+		message.message = error;
+		this.succeeded = false;
 	}
 }

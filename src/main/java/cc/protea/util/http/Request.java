@@ -2,6 +2,7 @@ package cc.protea.util.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -180,21 +181,42 @@ public class Request extends Message<Request> {
      * @throws IOException
      */
     private Response readResponse() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    	Response response = new Response();
+    	response.setResponseCode(connection.getResponseCode());
+    	response.setResponseMessage(connection.getResponseMessage());
+    	response.setHeaders(connection.getHeaderFields());
+    	try {
+    		response.setBody(getStringFromStream(connection.getInputStream()));
+    	} catch (IOException e) {
+    		response.setBody(getStringFromStream(connection.getErrorStream()));
+    	}
+        return response;
+    }
 
-        StringBuilder builder = new StringBuilder();
-        String line;
-
-        while ((line = reader.readLine()) != null) {
-            builder.append(line);
-        }
-        reader.close();
-
-        return new Response()
-                .setResponseCode(connection.getResponseCode())
-                .setResponseMessage(connection.getResponseMessage())
-                .setHeaders(connection.getHeaderFields())
-                .setBody(builder.toString());
+    private String getStringFromStream(final InputStream is) {
+    	if (is == null) {
+    		return null;
+    	}
+    	BufferedReader reader = null;
+    	try {
+ 	       reader = new BufferedReader(new InputStreamReader(is));
+ 	        StringBuilder builder = new StringBuilder();
+ 	        String line;
+ 	        while ((line = reader.readLine()) != null) {
+ 	            builder.append(line);
+ 	        }
+ 	        return builder.toString();
+     	} catch (IOException e) {
+     		return null;
+     	} finally {
+     		if (reader != null) {
+     			try {
+     				reader.close();
+     			} catch (IOException e) {
+     				// no-op
+     			}
+     		}
+     	}
     }
 
     /**

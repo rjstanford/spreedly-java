@@ -129,7 +129,7 @@ public class Spreedly {
 	}
 
 	private SpreedlyTransactionResponse transactionPost(final SpreedlyTransactionRequest request, final String url) {
-		return util.post("https://core.spreedly.com/v1/gateways/" + request.referenceTransactionToken + "/" + url, request, SpreedlyTransactionResponse.class);
+		return util.post("https://core.spreedly.com/v1/transactions/" + request.referenceTransactionToken + "/" + url, request, SpreedlyTransactionResponse.class);
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class Spreedly {
 	 * Retrieve a single transaction.
 	 */
 	public SpreedlyTransactionResponse getTransaction(final String token) {
-		return util.get("https://core.spreedly.com/v1/transactions/" + token + ".xml", SpreedlyTransactionResponse.class);
+		return util.get("https://core.spreedly.com/v1/xtransactions/" + token + ".xml", SpreedlyTransactionResponse.class);
 	}
 
 	/**

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class SpreedlyTransactionResponseResponse {
 
 	public boolean success;
-    public String message;
+    public SpreedlyMessage message;
     @XmlElement(name = "avs_code") public SpreedlyAvsResponse avsResponse;
     @XmlElement(name = "avs_message") public String avsMessage;
     @XmlElement(name = "cvv_code") public SpreedlyCvvResponse cvvResponse;
@@ -19,7 +19,13 @@ public class SpreedlyTransactionResponseResponse {
     @XmlElement(name = "error_code") public String errorCode;
     @XmlElement(name = "error_detail") public String errorDetail;
     public boolean cancelled;
+	/**
+	 * Date and time of origination.
+	 */
 	@XmlElement(name = "created_at") public Date createdOn;
+	/**
+	 * Date and time of modification.
+	 */
 	@XmlElement(name = "updated_at") public Date updatedOn;
 
 }

@@ -12,6 +12,8 @@ public enum SpreedlyCardType {
 	@XmlEnumValue("master") MASTERCARD,
 	@XmlEnumValue("american_express") AMEX,
 	@XmlEnumValue("discover") DISCOVER,
-	@XmlEnumValue("dankort") DANKORT
+	@XmlEnumValue("dankort") DANKORT,
+	@XmlEnumValue("jcb") JCB,
+	@XmlEnumValue("diners_club") DINERS_CLUB
 
 }

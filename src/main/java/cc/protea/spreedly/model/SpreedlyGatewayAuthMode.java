@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-class SpreedlyGatewayAuthMode {
+public class SpreedlyGatewayAuthMode {
 
 	/**
 	 * Spreedly assigned word identifying the collection of credentials.

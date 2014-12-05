@@ -13,6 +13,8 @@ import cc.protea.spreedly.model.SpreedlyGatewayCredential;
 @XmlRootElement(name = "gateway")
 public class SpreedlyGatewayAccountUpdate {
 
+	public SpreedlyGatewayAccountUpdate() {}
+
 	public SpreedlyGatewayAccountUpdate(final SpreedlyGatewayAccount in) {
 		this.gatewayType = in.gatewayType;
 		this.credentials.addAll(in.credentials);

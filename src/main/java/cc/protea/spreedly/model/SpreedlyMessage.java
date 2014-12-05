@@ -47,7 +47,7 @@ public class SpreedlyMessage {
 	}
 
 	/**
-	 * @param A brief description of the results of the transaction.
+	 * @param message A brief description of the results of the transaction.
 	 */
 	public void setMessage(final String message) {
 		this.message = message;
