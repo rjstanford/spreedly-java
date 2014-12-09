@@ -1,6 +1,14 @@
 spreedly-java
 =============
 
+```
+<dependency>
+    <groupId>cc.protea.spreedly</groupId>
+    <artifactId>spreedly</artifactId>
+    <version>0.9</version>
+</dependency>
+```
+
 I've attempted to preserve as much as possible of the Spreedly nomenclature, while making this more accessible to folk who spend
 a lot more time writing Java code than they do working with the Spreedly team.
 
