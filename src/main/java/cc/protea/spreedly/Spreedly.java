@@ -306,15 +306,17 @@ public class Spreedly {
 	}
 
 	/**
+	 * <p>
 	 * Redacting a payment method does not delete it. Its transaction history is maintained as your permanent record. However,
 	 * all sensitive information (e.g. PAN, CVV) is removed immediately and permanently. A redacted payment method can no longer
 	 * be used for transactions since the account information will have been disposed of. Spreedly does not charge storage fees
 	 * on redacted payment methods.
-	 * <br/><br/>
+	 * </p><p>
 	 * Most of the time, simply redacting a payment method will suffice because payment methods are for the most part only stored in
 	 * Spreedly. There are times though when a payment method is stored on the gateway and you'd like to notify the gateway that it
 	 * can no longer be used. In a case like this, if you just did a redact, then it's true that you'd no longer be able to use that
 	 * payment method with Spreedly, but it wouldn't stop you from using it directly through your gateway interface.
+	 * </p>
 	 */
 	public SpreedlyTransactionResponse redact(final String paymentMethodToken, final String gatewayAccountToken) {
 		SpreedlyPaymentMethodUpdate request = null;
@@ -336,11 +338,13 @@ public class Spreedly {
 	}
 
 	/**
+	 * <p>
 	 * Unless specifically instructed to do otherwise, Core purges all of the sensitive data of payment methods it has seen every
 	 * few minutes. To keep the sensitive information of a payment method around for later, simply instruct Core to retain it.
-	 * <br/><br/>
+	 * </p><p>
 	 * Passing the retain_on_success parameter to the purchase, verify, or authorize call can save you from having to make another
 	 * API call to do the retain. If the purchase, verify, or authorize succeeds, then the payment method is retained for you.
+	 * </p>
 	 */
 	public SpreedlyTransactionResponse retain(final String paymentMethodToken) {
 		return util.put("https://core.spreedly.com/v1/payment_methods/" + paymentMethodToken + "/retain.xml", null, SpreedlyTransactionResponse.class);
@@ -367,13 +371,15 @@ public class Spreedly {
 	}
 
 	/**
+	 * <p>
 	 * There are two ways to update a payment method. If you'd like to change the sensitive information like the credit card number
 	 * or the verification value, you'll want to just create and retain a new payment method using the usual transparent redirect approach,
 	 * redact the old payment method, and hold onto the token for the new payment method. This is the primary mechanism to use when you want
 	 * to give your customer the ability to update their card information. This process is described in detail as part of the Quickstart.
-	 * <br/><br/>
+	 * </p><p>
 	 * There may be times, though, when you'd like to update a payment method without customer interaction. In this case, we provide an API
 	 * call to do so. It's important to note that updating the card number and verification_value is prohibited using this API call.
+	 * </p>
 	 */
 	public SpreedlyTransactionResponse update(final SpreedlyPaymentMethod paymentMethod) {
 		return util.put("https://core.spreedly.com/v1/payment_methods/" + paymentMethod.token + ".xml", paymentMethod, SpreedlyTransactionResponse.class);

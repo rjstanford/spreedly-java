@@ -11,7 +11,7 @@ import org.w3c.dom.NodeList;
 
 
 /**
- * Spreedly sometimes returns an element containing (probably only one) elements that contain effectively random key/value pairs as <key>value<key>. The name of the
+ * Spreedly sometimes returns an element containing (probably only one) elements that contain effectively random key/value pairs as &lt;key&gt;value&lt;key&gt;. The name of the
  * wrapping element is unknown and generally corresponds to the gateway, but new gateways may be added at any time. The data is also unknown and may change over time.
  * @author rjstanford
  *
