@@ -13,7 +13,6 @@
 
 	<url>https://github.com/rjstanford/spreedly-java</url>
 
-
 	<issueManagement>
 		<url>https://github.com/rjstanford/spreedly-java/issues</url>
 		<system>GitHub Issues</system>
@@ -53,6 +52,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cc.protea.foundation.http</groupId>
+			<artifactId>http</artifactId>
+			<version>[0.2,)</version>
 		</dependency>
 	</dependencies>
 
