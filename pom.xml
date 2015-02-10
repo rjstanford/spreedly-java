@@ -146,10 +146,6 @@
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
-		<!-- <repository> <id>aws-release</id> <name>AWS Release Repository</name> 
-			<url>s3://protea-repo/release</url> </repository> <snapshotRepository> <id>aws-snapshot</id> 
-			<name>AWS Snapshot Repository</name> <url>s3://protea-repo/snapshot</url> 
-			</snapshotRepository> -->
 	</distributionManagement>
 
 </project>
