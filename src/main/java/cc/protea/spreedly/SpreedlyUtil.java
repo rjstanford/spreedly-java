@@ -19,11 +19,11 @@ import cc.protea.util.http.Response;
 
 class SpreedlyUtil {
 
-	private final String enironmentKey;
+	private final String environmentKey;
 	private final String apiSecret;
 
 	public SpreedlyUtil(final String environmentKey, final String apiSecret) {
-		this.enironmentKey = environmentKey;
+		this.environmentKey = environmentKey;
 		this.apiSecret = apiSecret;
 	}
 
@@ -101,7 +101,7 @@ class SpreedlyUtil {
 	}
 
 	private String getAuthorizationHeader() {
-		final String pair = this.enironmentKey + ":" + this.apiSecret;
+		final String pair = this.environmentKey + ":" + this.apiSecret;
 		final String base64 = DatatypeConverter.printBase64Binary(pair.getBytes());
 		return "Basic " + base64;
 	}
