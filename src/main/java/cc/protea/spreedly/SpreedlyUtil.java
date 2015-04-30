@@ -166,7 +166,7 @@ class SpreedlyUtil {
 		@XmlAttribute(name = "attribute") public String attribute;
 	}
 
-	private <T> T addError(final Class<T> type, final SpreedlyException in) {
+	<T> T addError(final Class<T> type, final SpreedlyException in) {
 		try {
 			return addError(type.newInstance(), in);
 		} catch (SpreedlyException se) {

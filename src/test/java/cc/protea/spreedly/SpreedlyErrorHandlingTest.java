@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.Scanner;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.junit.Assert;
@@ -31,15 +30,11 @@ public class SpreedlyErrorHandlingTest {
     SpreedlyUtil spreedlyUtil;
 
 	@Before
-	public void before() throws JAXBException, URISyntaxException {
+	public void before() throws URISyntaxException, FileNotFoundException {
 		spreedlyUtil = new SpreedlyUtil(null, null);
 		URL url = getClass().getResource("/SpreedlyTransactionResponseError.xml");
 		File file = new File(url.toURI());
-		try {
-			xml = new Scanner(file).useDelimiter("\\Z").next();
-		} catch (FileNotFoundException e) {
-			// nope
-		}
+		xml = new Scanner(file).useDelimiter("\\Z").next();
 	}
 
 	@Test
@@ -54,13 +49,26 @@ public class SpreedlyErrorHandlingTest {
 	}
 
 	@Test
-	public void test() throws JAXBException {
+	public void test() {
 		try {
 			spreedlyUtil.convert(xml, SpreedlyTransactionResponse.class);
 		} catch (SpreedlyException e) {
-			Assert.assertNotNull(e);
 			Assert.assertEquals("errors.blank", e.errorCode);
 			Assert.assertEquals("Merchant id number can't be blank", e.errorMessage);
+		}
+	}
+
+	@Test
+	public void testAddError() {
+		try {
+			spreedlyUtil.convert(xml, SpreedlyTransactionResponse.class);
+		} catch (SpreedlyException e) {
+			SpreedlyTransactionResponse response = spreedlyUtil.addError(SpreedlyTransactionResponse.class, e);
+			Assert.assertNotNull(response);
+			Assert.assertEquals(false, response.succeeded);
+			Assert.assertNotNull(response.message);
+			Assert.assertEquals("Merchant id number can't be blank", response.message.message);
+			Assert.assertEquals("errors.blank", response.message.key);
 		}
 	}
 }
