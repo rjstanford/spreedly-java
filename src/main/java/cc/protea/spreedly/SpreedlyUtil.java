@@ -3,6 +3,8 @@ package cc.protea.spreedly;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.JAXBContext;
@@ -10,6 +12,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlValue;
 
@@ -113,12 +116,12 @@ class SpreedlyUtil {
 			.addHeader("Content-Type", "application/xml");
 	}
 
-	private <T> T convert(final String xml, final Class<T> type) {
+	<T> T convert(final String xml, final Class<T> type) {
 		return convert(xml, type, true);
 	}
 
 	@SuppressWarnings("unchecked")
-	private <T> T convert(final String xml, final Class<T> type, final boolean handleErrors) {
+	<T> T convert(final String xml, final Class<T> type, final boolean handleErrors) {
 		if (xml == null) {
 			return null;
 		}
@@ -136,7 +139,7 @@ class SpreedlyUtil {
 			}
 			if (xml.contains("<errors>")) {
 				SpreedlyErrors errors = convert(xml, SpreedlyErrors.class, false);
-				throw new SpreedlyException(e, errors.error.key, errors.error.error);
+				throw new SpreedlyException(e, errors.errors.get(0).key, errors.errors.get(0).error);
 			}
 			if (xml.contains("<hash>")) {
 				SpreedlyHash hash = convert(xml, SpreedlyHash.class, false);
@@ -153,13 +156,14 @@ class SpreedlyUtil {
 	}
 
 	@XmlRootElement(name = "errors")
-	private static class SpreedlyErrors {
-		SpreedlyError error;
+	static class SpreedlyErrors {
+		@XmlElement(name = "error") public List<SpreedlyError> errors = new ArrayList<SpreedlyError>();
 	}
 
-	private static class SpreedlyError {
+	static class SpreedlyError {
 		@XmlValue public String error;
 		@XmlAttribute(name = "key") public String key;
+		@XmlAttribute(name = "attribute") public String attribute;
 	}
 
 	private <T> T addError(final Class<T> type, final SpreedlyException in) {
