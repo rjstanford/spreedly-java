@@ -1,0 +1,4 @@
+<errors>  
+  <error attribute="merchant_id_number" key="errors.blank">Merchant id number can't be blank</error>
+  <error attribute="merchant_key_number" key="errors.blank">Merchant key number can't be blank</error>
+</errors>
