@@ -1,13 +1,14 @@
 package cc.protea.spreedly.model.internal;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -63,10 +64,21 @@ public class SpreedlyNestedMapAdapter extends XmlAdapter<Object, Map<String, Str
 		return map.isEmpty() ? null : map;
 	}
 
+	private DocumentBuilder documentBuilder;
+
+
 	@Override
 	public Object marshal(final Map<String, String> v) throws Exception {
-		// We don't care - only unmarshalling these
 		return null;
+	}
+
+	public SpreedlyNestedMapAdapter() {
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			documentBuilder = dbf.newDocumentBuilder();
+		} catch(Exception e) {
+			// TODO - Handle Exception
+		}
 	}
 
 }

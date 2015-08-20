@@ -1,30 +1,47 @@
 package cc.protea.spreedly.model.internal;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import cc.protea.spreedly.model.SpreedlyGatewayAccount;
 import cc.protea.spreedly.model.SpreedlyGatewayCredential;
+
+import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement(name = "gateway")
 public class SpreedlyGatewayAccountUpdate {
 
-	public SpreedlyGatewayAccountUpdate() {}
+	DocumentBuilder documentBuilder;
+
+	public SpreedlyGatewayAccountUpdate() {
+		try {
+			documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public SpreedlyGatewayAccountUpdate(final SpreedlyGatewayAccount in) {
 		this.gatewayType = in.gatewayType;
-		this.credentials.addAll(in.credentials);
+		for (SpreedlyGatewayCredential credential : in.credentials) {
+			SpreedlyInternalKeyValuePair pair = new SpreedlyInternalKeyValuePair();
+			pair.key = credential.name;
+			pair.value = credential.value;
+			credentials.add(pair);
+		}
 	}
 
 	@XmlElement(name = "gateway_type")
 	public String gatewayType;
 
-	@XmlElementWrapper(name = "credentials")
-	@XmlElement(name = "credential")
-	public List<SpreedlyGatewayCredential> credentials = new ArrayList<SpreedlyGatewayCredential>();
+//	@XmlElementWrapper(name = "credentials")
+	@XmlAnyElement
+	@XmlJavaTypeAdapter(SpreedlyInternalKeyValuePairAdapter.class)
+	public List<SpreedlyInternalKeyValuePair> credentials = new ArrayList<SpreedlyInternalKeyValuePair>();
 
 }
