@@ -11,12 +11,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlValue;
 
 import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
+import cc.protea.spreedly.model.internal.SpreedlyErrorHash;
+import cc.protea.spreedly.model.internal.SpreedlyErrors;
 import cc.protea.util.http.Request;
 import cc.protea.util.http.Response;
 
@@ -142,28 +140,11 @@ class SpreedlyUtil {
 				throw new SpreedlyException(e, errors.errors.get(0).key, errors.errors.get(0).error);
 			}
 			if (xml.contains("<hash>")) {
-				SpreedlyHash hash = convert(xml, SpreedlyHash.class, false);
+				SpreedlyErrorHash hash = convert(xml, SpreedlyErrorHash.class, false);
 				throw new SpreedlyException(e, hash.status, hash.error);
 			}
 			throw new SpreedlyException(e);
 		}
-	}
-
-	@XmlRootElement(name = "hash")
-	private static class SpreedlyHash {
-		public String status;
-		public String error;
-	}
-
-	@XmlRootElement(name = "errors")
-	static class SpreedlyErrors {
-		@XmlElement(name = "error") public List<SpreedlyError> errors = new ArrayList<SpreedlyError>();
-	}
-
-	static class SpreedlyError {
-		@XmlValue public String error;
-		@XmlAttribute(name = "key") public String key;
-		@XmlAttribute(name = "attribute") public String attribute;
 	}
 
 	<T> T addError(final Class<T> type, final SpreedlyException in) {
