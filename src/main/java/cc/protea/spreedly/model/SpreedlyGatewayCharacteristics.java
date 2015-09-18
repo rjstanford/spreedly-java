@@ -22,6 +22,8 @@ public class SpreedlyGatewayCharacteristics {
 	@XmlElement(name = "supports_3dsecure_authorize") public boolean supports3DSecureAuthorize;
 	@XmlElement(name = "supports_store") public boolean supportsStore;
 	@XmlElement(name = "supports_remove") public boolean supportsRemove;
+	@XmlElement(name = "supports_disburse") public boolean supportsDisburse;
+	@XmlElement(name = "supports_fraud_review") public boolean supportsFraudReview;
 
 	public boolean isSupportsPurchase() {
 		return supportsPurchase;
@@ -112,6 +114,18 @@ public class SpreedlyGatewayCharacteristics {
 	}
 	public void setSupportsRemove(final boolean supportsRemove) {
 		this.supportsRemove = supportsRemove;
+	}
+	public boolean isSupportsDisburse() {
+		return supportsDisburse;
+	}
+	public void setsSupportsDisburse(final boolean supportsDisburse) {
+		this.supportsDisburse = supportsDisburse;
+	}
+	public boolean isSupportsFraudReview() {
+		return supportsFraudReview;
+	}
+	public void setsSupportsFraudReview(final boolean supportsFraudReview) {
+		this.supportsFraudReview = supportsFraudReview;
 	}
 
 
