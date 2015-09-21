@@ -234,7 +234,7 @@ public class Spreedly {
 	 * Retrieve a single transaction.
 	 */
 	public SpreedlyTransactionResponse getTransaction(final String token) {
-		return util.get("https://core.spreedly.com/v1/xtransactions/" + token + ".xml", SpreedlyTransactionResponse.class);
+		return util.get("https://core.spreedly.com/v1/transactions/" + token + ".xml", SpreedlyTransactionResponse.class);
 	}
 
 	/**

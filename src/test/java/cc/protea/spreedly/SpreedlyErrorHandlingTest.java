@@ -9,11 +9,11 @@ import java.util.Scanner;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import cc.protea.spreedly.model.internal.SpreedlyErrors;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import cc.protea.spreedly.SpreedlyUtil.SpreedlyErrors;
 import cc.protea.spreedly.model.SpreedlyTransactionResponse;
 import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
 

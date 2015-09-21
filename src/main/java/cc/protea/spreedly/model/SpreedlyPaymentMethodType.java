@@ -11,5 +11,8 @@ public enum SpreedlyPaymentMethodType {
 	@XmlEnumValue("credit_card") CREDIT_CARD,
 	@XmlEnumValue("bank_account") BANK_ACCOUNT,
 	@XmlEnumValue("dwolla") DWOLLA,
-	@XmlEnumValue("paypal") PAYPAL
+	@XmlEnumValue("paypal") PAYPAL,
+	@XmlEnumValue("sprel") SPREL,
+	@XmlEnumValue("third_party_token") THIRD_PARTY_TOKEN,
+	@XmlEnumValue("apple_pay") APPLE_PAY
 }
