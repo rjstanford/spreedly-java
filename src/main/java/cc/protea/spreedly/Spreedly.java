@@ -354,7 +354,7 @@ public class Spreedly {
 	 * Retrieve a single payment method by supplying the payment method key.
 	 */
 	public SpreedlyPaymentMethod getPaymentMethod(final String paymentMethodToken) {
-		return util.get("https://core.spreedly.com/v1/payment_methods/" + paymentMethodToken + "/retain.xml", SpreedlyPaymentMethod.class);
+		return util.get("https://core.spreedly.com/v1/payment_methods/" + paymentMethodToken, SpreedlyPaymentMethod.class);
 	}
 
 	/**
