@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import cc.protea.spreedly.model.SpreedlyCreditCard;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "payment_method")
 public class SpreedlyPaymentMethodCreateRequest {
