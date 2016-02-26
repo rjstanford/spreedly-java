@@ -3,8 +3,6 @@ package cc.protea.spreedly;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.JAXBContext;
@@ -12,8 +10,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
 import cc.protea.spreedly.model.internal.SpreedlyErrorHash;
+import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
 import cc.protea.spreedly.model.internal.SpreedlyErrors;
 import cc.protea.util.http.Request;
 import cc.protea.util.http.Response;
@@ -161,8 +159,12 @@ class SpreedlyUtil {
 		if (in instanceof SpreedlyErrorSetting) {
 			SpreedlyErrorSetting ses = (SpreedlyErrorSetting) in;
 			ses.setError(e.errorCode, e.errorMessage);
+			return in;
+		} else {
+			// update exception message to reflect gateway error
+			RuntimeException informativeException = new RuntimeException(e.errorCode + " : " + e.errorMessage, e);
+			throw new SpreedlyException(informativeException, e.errorCode, e.errorMessage);
 		}
-		return in;
 	}
 
 	private String convert(final Object object) {

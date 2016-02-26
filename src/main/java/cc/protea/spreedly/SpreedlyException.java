@@ -2,7 +2,7 @@ package cc.protea.spreedly;
 
 import cc.protea.util.http.Response;
 
-class SpreedlyException extends RuntimeException {
+public class SpreedlyException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 	public Response response = null;
