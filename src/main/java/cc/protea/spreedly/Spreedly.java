@@ -74,7 +74,8 @@ public class Spreedly {
 	 * @param sinceToken the last token received in the previous list
 	 */
 	public List<SpreedlyGatewayAccount> listGatewayAccounts(final String sinceToken) {
-		String url = "https://core.spreedly.com/v1/gateways.xml" + sinceToken == null ? "" : ("?since_token=" + sinceToken.trim());
+		String tokenString = sinceToken == null ? "" : ("?since_token=" + sinceToken.trim());
+		String url = "https://core.spreedly.com/v1/gateways.xml" + tokenString;
 		SpreedlyGatewayAccountResponse response = util.get(url, SpreedlyGatewayAccountResponse.class);
 		return response.gateways;
 	}
