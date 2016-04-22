@@ -382,8 +382,8 @@ public class Spreedly {
 	 * call to do so. It's important to note that updating the card number and verification_value is prohibited using this API call.
 	 * </p>
 	 */
-	public SpreedlyTransactionResponse update(final SpreedlyPaymentMethod paymentMethod) {
-		return util.put("https://core.spreedly.com/v1/payment_methods/" + paymentMethod.token + ".xml", paymentMethod, SpreedlyTransactionResponse.class);
+	public SpreedlyPaymentMethod update(final SpreedlyPaymentMethod paymentMethod) {
+		return util.put("https://core.spreedly.com/v1/payment_methods/" + paymentMethod.token + ".xml", paymentMethod, SpreedlyPaymentMethod.class);
 	}
 
 }
