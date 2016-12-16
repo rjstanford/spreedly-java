@@ -12,6 +12,8 @@ public enum SpreedlyTransactionType {
 	@XmlEnumValue("Capture") CAPTURE,
 	@XmlEnumValue("Credit") CREDIT,
 	@XmlEnumValue("RedactGateway") REDACT_GATEWAY,
-	@XmlEnumValue("RecacheSensitiveData") RECACHE_SENSITIVE_DATA
+	@XmlEnumValue("RecacheSensitiveData") RECACHE_SENSITIVE_DATA,
+	@XmlEnumValue("Verification") VERIFICATION
+
 
 }
