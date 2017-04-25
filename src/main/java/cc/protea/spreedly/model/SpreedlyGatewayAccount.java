@@ -31,6 +31,7 @@ public class SpreedlyGatewayAccount {
 	public boolean redacted;
 	@XmlElement(name = "created_at") public Date createdOn;
 	@XmlElement(name = "updated_at") public Date updatedOn;
+	@XmlElement(name = "description") public String description;
 	public String getToken() {
 		return token;
 	}
@@ -97,6 +98,11 @@ public class SpreedlyGatewayAccount {
 	public void setUpdatedOn(final Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
-
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(final String description) {
+		this.description = description;
+	}
 
 }
