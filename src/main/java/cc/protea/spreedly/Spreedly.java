@@ -6,6 +6,7 @@ import java.util.List;
 import cc.protea.spreedly.model.SpreedlyCreditCard;
 import cc.protea.spreedly.model.SpreedlyGatewayAccount;
 import cc.protea.spreedly.model.SpreedlyGatewayProvider;
+import cc.protea.spreedly.model.SpreedlyGatewayRedactResponse;
 import cc.protea.spreedly.model.SpreedlyPaymentMethod;
 import cc.protea.spreedly.model.SpreedlyTransactionRequest;
 import cc.protea.spreedly.model.SpreedlyTransactionResponse;
@@ -109,8 +110,8 @@ public class Spreedly {
 	 * Gateway accounts can't be deleted (since they're permanently associated with any transactions run against them), but the sensitive credential
 	 * information in them can be redacted so that they're inactive.
 	 */
-	public SpreedlyGatewayAccount redact(final SpreedlyGatewayAccount account) {
-		return util.put("https://core.spreedly.com/v1/gateways/" + account.token + "/redact.xml", null, SpreedlyGatewayAccount.class);
+	public SpreedlyGatewayRedactResponse redact(final SpreedlyGatewayAccount account) {
+		return util.put("https://core.spreedly.com/v1/gateways/" + account.token + "/redact.xml", null, SpreedlyGatewayRedactResponse.class);
 	}
 
 	/**
