@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cc.protea.spreedly.model.SpreedlyGatewayProvider;
+import cc.protea.spreedly.model.SpreedlyGatewayRedactResponse;
 
 
 public class SpreedlyTest {
@@ -61,7 +62,7 @@ public class SpreedlyTest {
 			return;
 		}
 
-		SpreedlyGatewayAccount redactedAccount = spreedly.redact(testAccount);
+		SpreedlyGatewayRedactResponse redactedAccount = spreedly.redact(testAccount);
 		Assert.assertTrue(redactedAccount.getState() == SpreedlyGatewayAccountState.REDACTED);
 	}
 
