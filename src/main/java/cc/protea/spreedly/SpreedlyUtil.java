@@ -10,6 +10,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cc.protea.spreedly.model.internal.SpreedlyErrorHash;
 import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
 import cc.protea.spreedly.model.internal.SpreedlyErrors;
@@ -21,6 +24,8 @@ class SpreedlyUtil {
 	private final String environmentKey;
 	private final String apiSecret;
 
+	private static final Logger logger = LoggerFactory.getLogger(SpreedlyUtil.class);
+	
 	public SpreedlyUtil(final String environmentKey, final String apiSecret) {
 		this.environmentKey = environmentKey;
 		this.apiSecret = apiSecret;
@@ -93,6 +98,7 @@ class SpreedlyUtil {
 			response = getService(url).setBody(body).postResource();
 			return convert(response.getBody(), type);
 		} catch (SpreedlyException e) {
+			logger.error("Spreedly error on parsing response. request url: {}, request body: {}, response: {}, exception: {}", url, bodyObject, response, e);
 			return addError(type, e);
 		} catch (IOException e) {
 			throw new SpreedlyException(e, response);
@@ -128,7 +134,8 @@ class SpreedlyUtil {
 			JAXBContext context = JAXBContext.newInstance(type);
 	        Unmarshaller un = context.createUnmarshaller();
 	        ByteArrayInputStream is = new ByteArrayInputStream(xml.getBytes());
-	        return (T) un.unmarshal(is);
+	        T unmarshal = (T) un.unmarshal(is);
+			return unmarshal;
 		} catch (JAXBException e) {
 			if (! handleErrors) {
 				throw new SpreedlyException(e);
@@ -141,6 +148,8 @@ class SpreedlyUtil {
 				SpreedlyErrorHash hash = convert(xml, SpreedlyErrorHash.class, false);
 				throw new SpreedlyException(e, hash.status, hash.error);
 			}
+			throw new SpreedlyException(e);
+		} catch (Exception e) {
 			throw new SpreedlyException(e);
 		}
 	}

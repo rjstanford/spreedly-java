@@ -1,9 +1,14 @@
 package cc.protea.spreedly.model;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "payment_method")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -38,8 +43,9 @@ public class SpreedlyPaymentMethod {
     @XmlElement(name = "shipping_zip") public String shippingZip;
     @XmlElement(name = "shipping_country") public String shippingCountry;
     @XmlElement(name = "shipping_phone_number") public String shippingPhoneNumber;
+    private String company;
     @XmlElement(name = "full_name") public String fullName;
-    @XmlElement(name = "eligible_for_card_updater") public boolean eligibleForCardUpdater;
+    @XmlElement(name = "eligible_for_card_updater") public Boolean eligibleForCardUpdater;
     @XmlElement(name = "payment_method_type") public SpreedlyPaymentMethodType paymentMethodType;
     @XmlElement(name = "verification_value") public String verificationValue;
 	@XmlElementWrapper(name = "errors")
@@ -228,10 +234,10 @@ public class SpreedlyPaymentMethod {
 	public void setFullName(final String fullName) {
 		this.fullName = fullName;
 	}
-	public boolean isEligibleForCardUpdater() {
+	public Boolean isEligibleForCardUpdater() {
 		return eligibleForCardUpdater;
 	}
-	public void setEligibleForCardUpdater(final boolean eligibleForCardUpdater) {
+	public void setEligibleForCardUpdater(final Boolean eligibleForCardUpdater) {
 		this.eligibleForCardUpdater = eligibleForCardUpdater;
 	}
 	public SpreedlyPaymentMethodType getPaymentMethodType() {
@@ -269,6 +275,14 @@ public class SpreedlyPaymentMethod {
 	}
 	public void setFingerprint(final String fingerprint) {
 		this.fingerprint = fingerprint;
+	}
+	public String getCompany()
+	{
+		return company;
+	}
+	public void setCompany(final String company)
+	{
+		this.company = company;
 	}
 
 

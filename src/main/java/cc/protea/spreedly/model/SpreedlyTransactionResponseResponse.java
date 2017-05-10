@@ -27,5 +27,7 @@ public class SpreedlyTransactionResponseResponse {
 	 * Date and time of modification.
 	 */
 	@XmlElement(name = "updated_at") public Date updatedOn;
+	@XmlElement(name = "result_unknown") public String resultUnknown;
+	@XmlElement(name = "fraud_review") public String fraudReview;
 
 }
