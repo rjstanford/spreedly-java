@@ -10,9 +10,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import cc.protea.spreedly.model.internal.SpreedlyErrorHash;
 import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
 import cc.protea.spreedly.model.internal.SpreedlyErrors;
@@ -24,8 +21,6 @@ class SpreedlyUtil {
 	private final String environmentKey;
 	private final String apiSecret;
 
-	private static final Logger logger = LoggerFactory.getLogger(SpreedlyUtil.class);
-	
 	public SpreedlyUtil(final String environmentKey, final String apiSecret) {
 		this.environmentKey = environmentKey;
 		this.apiSecret = apiSecret;
