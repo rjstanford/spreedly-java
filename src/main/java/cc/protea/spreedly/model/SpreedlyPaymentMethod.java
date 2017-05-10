@@ -43,7 +43,7 @@ public class SpreedlyPaymentMethod {
     @XmlElement(name = "shipping_zip") public String shippingZip;
     @XmlElement(name = "shipping_country") public String shippingCountry;
     @XmlElement(name = "shipping_phone_number") public String shippingPhoneNumber;
-    private String company;
+    public String company;
     @XmlElement(name = "full_name") public String fullName;
     @XmlElement(name = "eligible_for_card_updater") public Boolean eligibleForCardUpdater;
     @XmlElement(name = "payment_method_type") public SpreedlyPaymentMethodType paymentMethodType;

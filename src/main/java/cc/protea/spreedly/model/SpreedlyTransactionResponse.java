@@ -64,11 +64,11 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	/**
 	 * Description of the product or service rendered.
 	 */
-	@XmlElement(name = "description") public String description;
+	public String description;
 	/**
 	 * Customer email address.
 	 */
-	@XmlElement(name = "email") public String email;
+	public String email;
 	/**
 	 * Name of merchant.
 	 */
@@ -90,7 +90,8 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlElement(name = "payment_method_added") public boolean paymentMethodAdded;
 	public SpreedlyMessage message;
 	@XmlElement(name = "gateway_token") public String gatewayToken;
-	@XmlElement(name = "shipping_address") public SpreedlyShippingAddress shippingAddress;
+	@XmlElement(name = "shipping_address")
+	public SpreedlyShippingAddress shippingAddress;
 	public SpreedlyTransactionResponseResponse response;
 	@XmlElement(name = "payment_method") public SpreedlyPaymentMethod paymentMethod;
 	@XmlElement(name = "basis_payment_method") public SpreedlyPaymentMethod basisPaymentMethod;
@@ -514,5 +515,14 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 		message.key = key;
 		message.message = error;
 		this.succeeded = false;
+	}
+	
+	public SpreedlyShippingAddress getShippingAddress()
+	{
+		return shippingAddress;
+	}
+	public void setShippingAddress(SpreedlyShippingAddress shippingAddress)
+	{
+		this.shippingAddress = shippingAddress;
 	}
 }

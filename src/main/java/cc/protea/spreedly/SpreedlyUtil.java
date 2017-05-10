@@ -98,7 +98,6 @@ class SpreedlyUtil {
 			response = getService(url).setBody(body).postResource();
 			return convert(response.getBody(), type);
 		} catch (SpreedlyException e) {
-			logger.error("Spreedly error on parsing response. request url: {}, request body: {}, response: {}, exception: {}", url, bodyObject, response, e);
 			return addError(type, e);
 		} catch (IOException e) {
 			throw new SpreedlyException(e, response);
@@ -134,8 +133,7 @@ class SpreedlyUtil {
 			JAXBContext context = JAXBContext.newInstance(type);
 	        Unmarshaller un = context.createUnmarshaller();
 	        ByteArrayInputStream is = new ByteArrayInputStream(xml.getBytes());
-	        T unmarshal = (T) un.unmarshal(is);
-			return unmarshal;
+	        return (T) un.unmarshal(is);
 		} catch (JAXBException e) {
 			if (! handleErrors) {
 				throw new SpreedlyException(e);
@@ -149,9 +147,7 @@ class SpreedlyUtil {
 				throw new SpreedlyException(e, hash.status, hash.error);
 			}
 			throw new SpreedlyException(e);
-		} catch (Exception e) {
-			throw new SpreedlyException(e);
-		}
+		} 
 	}
 
 	<T> T addError(final Class<T> type, final SpreedlyException in) {

@@ -11,7 +11,6 @@ import javax.xml.bind.Unmarshaller;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import cc.protea.spreedly.model.SpreedlyTransactionResponse;
@@ -21,7 +20,6 @@ import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
 // Example taken from https://docs.spreedly.com/payment-gateways/paypal/
 //
 // This tests most of the stranger XML parsing.
-@Ignore
 public class SpreedlyErrorHandlingTest {
 
 	SpreedlyNestedMapAdapter adapter;
