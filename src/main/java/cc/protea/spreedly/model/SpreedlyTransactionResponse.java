@@ -90,8 +90,7 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlElement(name = "payment_method_added") public boolean paymentMethodAdded;
 	public SpreedlyMessage message;
 	@XmlElement(name = "gateway_token") public String gatewayToken;
-	@XmlElement(name = "shipping_address")
-	public SpreedlyShippingAddress shippingAddress;
+	@XmlElement(name = "shipping_address") public SpreedlyShippingAddress shippingAddress;
 	public SpreedlyTransactionResponseResponse response;
 	@XmlElement(name = "payment_method") public SpreedlyPaymentMethod paymentMethod;
 	@XmlElement(name = "basis_payment_method") public SpreedlyPaymentMethod basisPaymentMethod;
@@ -517,12 +516,23 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 		this.succeeded = false;
 	}
 	
+	public String getGatewayLatencyMs()
+	{
+		return gatewayLatencyMs;
+	}
+	public SpreedlyTransactionResponse setGatewayLatencyMs(String gatewayLatencyMs)
+	{
+		this.gatewayLatencyMs = gatewayLatencyMs;
+		return this;
+	}
 	public SpreedlyShippingAddress getShippingAddress()
 	{
 		return shippingAddress;
 	}
-	public void setShippingAddress(SpreedlyShippingAddress shippingAddress)
+	public SpreedlyTransactionResponse setShippingAddress(SpreedlyShippingAddress shippingAddress)
 	{
 		this.shippingAddress = shippingAddress;
+		return this;
 	}
+
 }
