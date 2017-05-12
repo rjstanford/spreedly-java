@@ -5,7 +5,7 @@ spreedly-java
 <dependency>
     <groupId>cc.protea.spreedly</groupId>
     <artifactId>spreedly</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.8</version>
 </dependency>
 ```
 
