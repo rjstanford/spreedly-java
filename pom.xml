@@ -58,6 +58,7 @@
 			<artifactId>http</artifactId>
 			<version>[0.2,)</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>

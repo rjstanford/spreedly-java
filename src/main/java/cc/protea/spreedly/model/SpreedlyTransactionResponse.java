@@ -85,10 +85,12 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlJavaTypeAdapter(SpreedlyNestedMapAdapter.class)
 	@XmlElement(name = "gateway_specific_response_fields") public Map<String, String> gatewaySpecificResponseFields = new HashMap<String, String>();
 	@XmlElement(name = "gateway_transaction_id") public String gatewayTransactionId;
+	@XmlElement(name = "gateway_latency_ms") public String gatewayLatencyMs;
 	@XmlElement(name = "retain_on_success") public boolean retainOnSuccess;
 	@XmlElement(name = "payment_method_added") public boolean paymentMethodAdded;
 	public SpreedlyMessage message;
 	@XmlElement(name = "gateway_token") public String gatewayToken;
+	@XmlElement(name = "shipping_address") public SpreedlyShippingAddress shippingAddress;
 	public SpreedlyTransactionResponseResponse response;
 	@XmlElement(name = "payment_method") public SpreedlyPaymentMethod paymentMethod;
 	@XmlElement(name = "basis_payment_method") public SpreedlyPaymentMethod basisPaymentMethod;
@@ -106,6 +108,7 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	 * See https://docs.spreedly.com/guides/3dsecure/ for more information.
 	 */
 	@XmlElement(name = "checkout_url") public String checkoutUrl;
+	
 	/**
 	 * If a checkoutForm is returned, you need to render and submit it. You can also parse it (it is always a valid XHTML fragment) and build your own form with the same action and input fields.
 	 * See https://docs.spreedly.com/guides/3dsecure/ for more information.
@@ -512,4 +515,24 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 		message.message = error;
 		this.succeeded = false;
 	}
+	
+	public String getGatewayLatencyMs()
+	{
+		return gatewayLatencyMs;
+	}
+	public SpreedlyTransactionResponse setGatewayLatencyMs(String gatewayLatencyMs)
+	{
+		this.gatewayLatencyMs = gatewayLatencyMs;
+		return this;
+	}
+	public SpreedlyShippingAddress getShippingAddress()
+	{
+		return shippingAddress;
+	}
+	public SpreedlyTransactionResponse setShippingAddress(SpreedlyShippingAddress shippingAddress)
+	{
+		this.shippingAddress = shippingAddress;
+		return this;
+	}
+
 }

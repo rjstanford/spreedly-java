@@ -142,7 +142,7 @@ class SpreedlyUtil {
 				throw new SpreedlyException(e, hash.status, hash.error);
 			}
 			throw new SpreedlyException(e);
-		}
+		} 
 	}
 
 	<T> T addError(final Class<T> type, final SpreedlyException in) {
