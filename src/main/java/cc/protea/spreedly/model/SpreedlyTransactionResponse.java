@@ -117,6 +117,12 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlElement(name = "setup_response") public SpreedlyTransactionResponseDetails setupResponse;
 	@XmlElement(name = "redirect_response") public SpreedlyTransactionResponseDetails redirectResponse;
 	@XmlElement(name = "callback_response") public SpreedlyTransactionResponseDetails callbackResponse;
+	
+	/**
+	 * The required action in the 3DS 2 flow, e.g., none, device_fingerprint, challenge, etc
+	 */
+	@XmlElement(name = "required_action") public String requiredAction;
+	
 
 	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
@@ -534,5 +540,15 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 		this.shippingAddress = shippingAddress;
 		return this;
 	}
-
+	
+	public String getRequiredAction()
+	{
+		return requiredAction;
+	}
+	
+	public SpreedlyTransactionResponse setRequiredAction(String requiredAction)
+	{
+		this.requiredAction = requiredAction;
+		return this;
+	}
 }
