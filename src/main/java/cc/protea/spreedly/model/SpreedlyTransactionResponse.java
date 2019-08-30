@@ -120,10 +120,17 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	
 	/**
 	 * The required action in the 3DS 2 flow, e.g., none, device_fingerprint, challenge, etc
+	 * See https://docs.spreedly.com/guides/3dsecure2/ for more information.
 	 */
 	@XmlElement(name = "required_action") public String requiredAction;
 	
-
+	
+	/**
+	 * The device fingerprint form to render in case that the required_action is device_fingerprint.
+	 * See https://docs.spreedly.com/guides/3dsecure2/ for more information.
+	 */
+	@XmlElement(name = "device_fingerprint_form") public String deviceFingerprintForm;
+	
 	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
 	 */
@@ -549,6 +556,17 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	public SpreedlyTransactionResponse setRequiredAction(String requiredAction)
 	{
 		this.requiredAction = requiredAction;
+		return this;
+	}
+	
+	public String getDeviceFingerprintForm()
+	{
+		return deviceFingerprintForm;
+	}
+	
+	public SpreedlyTransactionResponse setDeviceFingerprintForm(String deviceFingerprintForm)
+	{
+		this.deviceFingerprintForm = deviceFingerprintForm;
 		return this;
 	}
 }
