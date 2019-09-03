@@ -396,7 +396,7 @@ public class Spreedly {
 	 * @param token transaction_token to complete
 	 */
 	public SpreedlyTransactionResponse complete(String token) {
-		return util.put("https://core.spreedly.com/v1/transactions/" + token + "/complete.xml", null, SpreedlyTransactionResponse.class);
+		return util.post("https://core.spreedly.com/v1/transactions/" + token + "/complete.xml", null, SpreedlyTransactionResponse.class);
 	}
 
 }
