@@ -1,17 +1,16 @@
 package cc.protea.spreedly.model;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
+import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
-import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @XmlRootElement(name = "transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -130,6 +129,10 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	 * See https://docs.spreedly.com/guides/3dsecure2/ for more information.
 	 */
 	@XmlElement(name = "device_fingerprint_form") public String deviceFingerprintForm;
+	
+	@XmlElement(name = "challenge_url") public String challengeUrl;
+	
+	@XmlElement(name = "challenge_form") public String challengeForm;
 	
 	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
@@ -567,6 +570,28 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	public SpreedlyTransactionResponse setDeviceFingerprintForm(String deviceFingerprintForm)
 	{
 		this.deviceFingerprintForm = deviceFingerprintForm;
+		return this;
+	}
+	
+	public String getChallengeUrl()
+	{
+		return challengeUrl;
+	}
+	
+	public SpreedlyTransactionResponse setChallengeUrl(String challengeUrl)
+	{
+		this.challengeUrl = challengeUrl;
+		return this;
+	}
+	
+	public String getChallengeForm()
+	{
+		return challengeForm;
+	}
+	
+	public SpreedlyTransactionResponse setChallengeForm(String challengeForm)
+	{
+		this.challengeForm = challengeForm;
 		return this;
 	}
 }
