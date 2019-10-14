@@ -77,7 +77,7 @@ public class SpreedlyTransactionRequest {
 	/**
 	 * Please see https://docs.spreedly.com/guides/3dsecure/ for usage instructions
 	 */
-	@XmlElement(name = "attempt_3dsecure") public boolean attempt3dSecure;
+	@XmlElement(name = "attempt_3dsecure") public Boolean attempt3dSecure = false;
 
 	/**
 	 * Please see https://docs.spreedly.com/guides/3dsecure/ for usage instructions
