@@ -172,6 +172,7 @@ public class Spreedly {
 	 * they were created against, and you'll receive an error if you try to use them with the wrong gateway.
 	 */
 	public SpreedlyTransactionResponse store(final SpreedlyTransactionRequest request) {
+		request.attempt3dSecure = null;
 		return gatewayPost(request, "store.xml");
 	}
 

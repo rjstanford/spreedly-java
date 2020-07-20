@@ -77,7 +77,7 @@ public class SpreedlyTransactionRequest {
 	/**
 	 * Please see https://docs.spreedly.com/guides/3dsecure/ for usage instructions
 	 */
-	@XmlElement(name = "attempt_3dsecure") public boolean attempt3dSecure;
+	@XmlElement(name = "attempt_3dsecure") public Boolean attempt3dSecure = false;
 
 	/**
 	 * Please see https://docs.spreedly.com/guides/3dsecure/ for usage instructions
@@ -90,12 +90,12 @@ public class SpreedlyTransactionRequest {
 	 * within this time, it will retry the callback again at least 4 times at ever-increasing intervals.
 	 */
 	@XmlElement(name = "callback_url") public String callbackUrl;
-	
+
 	/**
 	 * Browser info collected for 3ds. Please see https://docs.spreedly.com/guides/3dsecure2/ for more info
 	 */
 	@XmlElement(name = "browser_info") public String browserInfo;
-	
+
 	/**
 	 * Set to 2 to use 3DS2. Please see https://docs.spreedly.com/guides/3dsecure2/ for more info
 	 */
@@ -330,22 +330,22 @@ public class SpreedlyTransactionRequest {
 		this.callbackUrl = callbackUrl;
 		return this;
 	}
-	
+
 	public String getBrowserInfo()
 	{
 		return browserInfo;
 	}
-	
+
 	public void setBrowserInfo(String browserInfo)
 	{
 		this.browserInfo = browserInfo;
 	}
-	
+
 	public String getThreeDsVersion()
 	{
 		return threeDsVersion;
 	}
-	
+
 	public void setThreeDsVersion(String threeDsVersion)
 	{
 		this.threeDsVersion = threeDsVersion;
