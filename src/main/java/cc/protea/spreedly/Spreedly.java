@@ -396,8 +396,8 @@ public class Spreedly {
 	 * For more details see https://docs.spreedly.com/guides/3dsecure2/
 	 * @param token transaction_token to complete
 	 */
-	public SpreedlyTransactionResponse complete(String token, String body) {
-		return util.post("https://core.spreedly.com/v1/transactions/" + token + "/complete.xml", body, SpreedlyTransactionResponse.class);
+	public SpreedlyTransactionResponse complete(String token, SpreedlyCompleteRequest request) {
+		return util.post("https://core.spreedly.com/v1/transactions/" + token + "/complete.xml", request, SpreedlyTransactionResponse.class);
 	}
 
 }
