@@ -8,9 +8,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Map;
 
 
-@XmlRootElement
+@XmlRootElement(name = "transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SpreedlyCompleteRequest
 {
 	public Map<String, Object> context;
+
+	public Map<String, Object> getContext() {
+		return context;
+	}
+
+	public void setContext(Map<String, Object> context) {
+		this.context = context;
+	}
 }
