@@ -5,20 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.HashMap;
 import java.util.Map;
 
 
-@XmlRootElement(name = "transaction")
+@XmlRootElement(name = "context")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SpreedlyCompleteRequest
+public class SpreedlyCompleteRequest extends HashMap<String, Object>
 {
-	public Map<String, Object> context;
 
-	public Map<String, Object> getContext() {
-		return context;
-	}
-
-	public void setContext(Map<String, Object> context) {
-		this.context = context;
-	}
 }
