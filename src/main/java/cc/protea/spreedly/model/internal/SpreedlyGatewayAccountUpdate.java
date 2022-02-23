@@ -17,6 +17,8 @@ import java.util.List;
 public class SpreedlyGatewayAccountUpdate {
 
 	DocumentBuilder documentBuilder;
+  
+	@XmlElement(name = "mode")
 	public String mode;
 
 	public SpreedlyGatewayAccountUpdate() {
