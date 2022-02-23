@@ -1,17 +1,16 @@
 package cc.protea.spreedly.model;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
+import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import cc.protea.spreedly.model.internal.SpreedlyErrorSetting;
-import cc.protea.spreedly.model.internal.SpreedlyNestedMapAdapter;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @XmlRootElement(name = "transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -117,7 +116,24 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlElement(name = "setup_response") public SpreedlyTransactionResponseDetails setupResponse;
 	@XmlElement(name = "redirect_response") public SpreedlyTransactionResponseDetails redirectResponse;
 	@XmlElement(name = "callback_response") public SpreedlyTransactionResponseDetails callbackResponse;
-
+	
+	/**
+	 * The required action in the 3DS 2 flow, e.g., none, device_fingerprint, challenge, etc
+	 * See https://docs.spreedly.com/guides/3dsecure2/ for more information.
+	 */
+	@XmlElement(name = "required_action") public String requiredAction;
+	
+	
+	/**
+	 * The device fingerprint form to render in case that the required_action is device_fingerprint.
+	 * See https://docs.spreedly.com/guides/3dsecure2/ for more information.
+	 */
+	@XmlElement(name = "device_fingerprint_form") public String deviceFingerprintForm;
+	
+	@XmlElement(name = "challenge_url") public String challengeUrl;
+	
+	@XmlElement(name = "challenge_form") public String challengeForm;
+	
 	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
 	 */
@@ -534,5 +550,48 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 		this.shippingAddress = shippingAddress;
 		return this;
 	}
-
+	
+	public String getRequiredAction()
+	{
+		return requiredAction;
+	}
+	
+	public SpreedlyTransactionResponse setRequiredAction(String requiredAction)
+	{
+		this.requiredAction = requiredAction;
+		return this;
+	}
+	
+	public String getDeviceFingerprintForm()
+	{
+		return deviceFingerprintForm;
+	}
+	
+	public SpreedlyTransactionResponse setDeviceFingerprintForm(String deviceFingerprintForm)
+	{
+		this.deviceFingerprintForm = deviceFingerprintForm;
+		return this;
+	}
+	
+	public String getChallengeUrl()
+	{
+		return challengeUrl;
+	}
+	
+	public SpreedlyTransactionResponse setChallengeUrl(String challengeUrl)
+	{
+		this.challengeUrl = challengeUrl;
+		return this;
+	}
+	
+	public String getChallengeForm()
+	{
+		return challengeForm;
+	}
+	
+	public SpreedlyTransactionResponse setChallengeForm(String challengeForm)
+	{
+		this.challengeForm = challengeForm;
+		return this;
+	}
 }

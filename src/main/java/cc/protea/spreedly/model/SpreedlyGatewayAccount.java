@@ -32,6 +32,9 @@ public class SpreedlyGatewayAccount {
 	@XmlElement(name = "created_at") public Date createdOn;
 	@XmlElement(name = "updated_at") public Date updatedOn;
 	@XmlElement(name = "description") public String description;
+	public String mode;
+	public boolean sandbox;
+
 	public String getToken() {
 		return token;
 	}
@@ -105,4 +108,19 @@ public class SpreedlyGatewayAccount {
 		this.description = description;
 	}
 
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	public boolean isSandbox() {
+		return sandbox;
+	}
+
+	public void setSandbox(boolean sandbox) {
+		this.sandbox = sandbox;
+	}
 }
