@@ -17,6 +17,8 @@ import java.util.List;
 public class SpreedlyGatewayAccountUpdate {
 
 	DocumentBuilder documentBuilder;
+	@XmlElement(name = "mode")
+	public String mode;
 
 	public SpreedlyGatewayAccountUpdate() {
 		try {
@@ -28,6 +30,7 @@ public class SpreedlyGatewayAccountUpdate {
 
 	public SpreedlyGatewayAccountUpdate(final SpreedlyGatewayAccount in) {
 		this.gatewayType = in.gatewayType;
+		this.mode = in.getMode();
 		for (SpreedlyGatewayCredential credential : in.credentials) {
 			SpreedlyInternalKeyValuePair pair = new SpreedlyInternalKeyValuePair();
 			pair.key = credential.name;
