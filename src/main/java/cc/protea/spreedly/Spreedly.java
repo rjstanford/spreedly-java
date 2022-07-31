@@ -1,7 +1,6 @@
 package cc.protea.spreedly;
 
 import cc.protea.spreedly.model.*;
-import cc.protea.spreedly.model.internal.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -400,4 +399,21 @@ public class Spreedly {
 		return util.post("https://core.spreedly.com/v1/transactions/" + token + "/complete.xml", null, SpreedlyTransactionResponse.class);
 	}
 
+	/**
+	 * Completes a 3DS 2 transaction in the device fingerprint stage.
+	 * For more details see https://docs.spreedly.com/guides/3dsecure2/
+	 * @param token transaction_token to complete
+	 */
+	public SpreedlyMerchantProfile create(final SpreedlyMerchantProfileRequest request) {
+		return util.post("https://core.spreedly.com/v1/merchant_profiles.xml", request, SpreedlyMerchantProfile.class);
+	}
+
+	/**
+	 * Adds a gateway account to the authenticated environment. One gateway account is required for each set of merchant account
+	 * credentials. Spreedly stores and protects the credentials to be used to authenticate with gateway accounts for
+	 * transaction processing.
+	 */
+	public SpreedlyScaProvider create(final SpreedlyScaProviderRequest request) {
+		return util.post("https://core.spreedly.com/v1/sca/providers.xml", request, SpreedlyScaProvider.class);
+	}
 }
