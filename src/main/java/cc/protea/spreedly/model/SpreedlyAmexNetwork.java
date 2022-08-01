@@ -6,24 +6,24 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SpreedlyAmexNetwork {
 
-	@XmlElement(name = "acquirer_merchant_id") public Long acquirerMerchantId;
-	@XmlElement(name = "country_code") public String countryCode;
+	@XmlElement(name = "acquirer_merchant_id") public String acquirerMerchantId;
+	@XmlElement(name = "country_code") public Long countryCode;
 	@XmlElement(name = "mcc") public Long mcc;
 	@XmlElement(name = "merchant_name") public String name;
 
-	public Long getAcquirerMerchantId() {
+	public String getAcquirerMerchantId() {
 		return acquirerMerchantId;
 	}
 
-	public void setAcquirerMerchantId(Long acquirerMerchantId) {
+	public void setAcquirerMerchantId(String acquirerMerchantId) {
 		this.acquirerMerchantId = acquirerMerchantId;
 	}
 
-	public String getCountryCode() {
+	public Long getCountryCode() {
 		return countryCode;
 	}
 
-	public void setCountryCode(String countryCode) {
+	public void setCountryCode(Long countryCode) {
 		this.countryCode = countryCode;
 	}
 
