@@ -5,14 +5,12 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "merchant_profile")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SpreedlyMerchantProfileRequest {
-	@XmlElement(name = "description") public String description;
-	@XmlElementWrapper(name = "amex")
+	@XmlElement(name = "description")
+	public String description;
 	@XmlElement(name = "amex")
 	public SpreedlyAmexNetwork amex;
-	@XmlElementWrapper(name = "visa")
 	@XmlElement(name = "visa")
 	public SpreedlyVisaNetwork visa;
-	@XmlElementWrapper(name = "mastercard")
 	@XmlElement(name = "mastercard")
 	public SpreedlyMastercardNetwork mastercard;
 

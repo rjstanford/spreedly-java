@@ -1,20 +1,15 @@
 package cc.protea.spreedly.model;
 
 import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @XmlRootElement(name = "card_networks")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SpreedlyCreditNetwork {
 
-	@XmlElementWrapper(name = "visa")
 	@XmlElement(name = "visa")
 	public SpreedlyVisaNetwork visa;
-	@XmlElementWrapper(name = "mastercard")
 	@XmlElement(name = "mastercard")
 	public SpreedlyMastercardNetwork mastercard;
-	@XmlElementWrapper(name = "amex")
 	@XmlElement(name = "amex")
 	public SpreedlyAmexNetwork amex;
 

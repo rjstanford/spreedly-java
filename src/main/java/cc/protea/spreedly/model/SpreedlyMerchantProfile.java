@@ -10,7 +10,6 @@ import java.util.List;
 public class SpreedlyMerchantProfile {
 	@XmlElement(name = "description") public String description;
 	@XmlElement(name = "token") public String token;
-	@XmlElementWrapper(name = "card_networks")
 	@XmlElement(name = "card_networks")
 	SpreedlyCreditNetwork creditNetwork;
 	@XmlElement(name = "created_at") public Date createdOn;
