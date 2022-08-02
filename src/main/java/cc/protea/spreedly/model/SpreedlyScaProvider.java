@@ -11,12 +11,16 @@ public class SpreedlyScaProvider {
 	@XmlElement(name = "type") public String type ;
 	@XmlElement(name = "created_at") public Date createdOn;
 	@XmlElement(name = "updated_at") public Date updatedOn;
-	@XmlElementWrapper(name = "visa")
 	@XmlElement(name = "visa")
 	public SpreedlyVisaDetails visa;
-	@XmlElementWrapper(name = "mastercard")
 	@XmlElement(name = "mastercard")
 	public SpreedlyMastercardDetails mastercard;
+	@XmlElement(name = "amex")
+	public SpreedlyAmexDetails amex;
+
+	public String getType() {
+		return type;
+	}
 
 	public String isType() {
 		return type;
@@ -49,10 +53,6 @@ public class SpreedlyScaProvider {
 	public void setAmex(SpreedlyAmexDetails amex) {
 		this.amex = amex;
 	}
-
-	@XmlElementWrapper(name = "amex")
-	@XmlElement(name = "amex")
-	public SpreedlyAmexDetails amex;
 
 	public String getToken() {
 		return token;

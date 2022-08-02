@@ -390,10 +390,6 @@ public class Spreedly {
 		return util.put("https://core.spreedly.com/v1/payment_methods/" + paymentMethod.token + ".xml", paymentMethod, SpreedlyPaymentMethod.class);
 	}
 	
-    	public SpreedlyTransactionResponse complete(String token, SpreedlyCompleteRequest request) {
-        	return (SpreedlyTransactionResponse)this.util.post("https://core.spreedly.com/v1/transactions/" + token + "/complete.xml", request, SpreedlyTransactionResponse.class);
-	}
-	
 	/**
 	 * Completes a 3DS 2 transaction in the device fingerprint stage.
 	 * For more details see https://docs.spreedly.com/guides/3dsecure2/

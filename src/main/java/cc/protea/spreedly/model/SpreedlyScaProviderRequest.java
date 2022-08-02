@@ -9,13 +9,10 @@ public class SpreedlyScaProviderRequest {
 
 	@XmlElement(name = "merchant_profile_key") public String merchantProfileKey;
 	@XmlElement(name = "type") public String type ;
-	@XmlElementWrapper(name = "visa")
 	@XmlElement(name = "visa")
 	public SpreedlyVisaDetails visa;
-	@XmlElementWrapper(name = "mastercard")
 	@XmlElement(name = "mastercard")
 	public SpreedlyMastercardDetails mastercard;
-	@XmlElementWrapper(name = "amex")
 	@XmlElement(name = "amex")
 	public SpreedlyAmexDetails amex;
 
