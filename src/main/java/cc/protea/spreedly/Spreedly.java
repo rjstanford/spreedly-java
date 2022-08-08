@@ -402,7 +402,7 @@ public class Spreedly {
 	/**
 	 * Create an SCA Provider on the given Merchant Profile. An SCA Provider can be used to run 3DS2 Global
 	 * authentications on the authenticate endpoint or as part of authorize and purchase transactions.
-     */
+	 */
 	public SpreedlyMerchantProfile create(final SpreedlyMerchantProfileRequest request) {
 		return util.post("https://core.spreedly.com/v1/merchant_profiles.xml", request, SpreedlyMerchantProfile.class);
 	}
