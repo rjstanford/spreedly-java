@@ -102,7 +102,7 @@ public class SpreedlyTransactionRequest {
 	@XmlElement(name = "three_ds_version") public String threeDsVersion;
 
 	/**
-	 * Charge an SCA Authenticated payment method (already stored in the Spreedly environment) the specified amount.
+	 * The token received in response body of SCA Authenticate endpoint when performing an SCA Authentication on a specified payment method.
 	 */
 	@XmlElement(name = "sca_authentication_token") public String scaAuthenticationToken;
 	/**

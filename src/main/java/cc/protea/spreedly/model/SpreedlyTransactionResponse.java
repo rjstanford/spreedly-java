@@ -135,11 +135,6 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlElement(name = "challenge_form") public String challengeForm;
 
 	/**
-	 * Charge an SCA Authenticated payment method (already stored in the Spreedly environment) the specified amount.
-	 */
-	@XmlElement(name = "sca_authentication_token") public String scaAuthenticationToken;
-	
-	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
 	 */
 	public Integer getAmountInCents() {
@@ -598,13 +593,5 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	{
 		this.challengeForm = challengeForm;
 		return this;
-	}
-
-	public String getScaAuthenticationToken() {
-		return scaAuthenticationToken;
-	}
-
-	public void setScaAuthenticationToken(String scaAuthenticationToken) {
-		this.scaAuthenticationToken = scaAuthenticationToken;
 	}
 }
