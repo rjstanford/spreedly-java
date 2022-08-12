@@ -415,4 +415,11 @@ public class Spreedly {
 	public SpreedlyScaProvider create(final SpreedlyScaProviderRequest request) {
 		return util.post("https://core.spreedly.com/v1/sca/providers.xml", request, SpreedlyScaProvider.class);
 	}
+
+	/**
+	 * Authenticate a given payment method and amount against provided SCA Provider Key (specified in request URL).
+	 */
+	public SpreedlyScaAuthenticationResponse authenticateScaProvider(String scaProviderKey , final SpreedlyTransactionRequest request) {
+		return util.post("https://core.spreedly.com/v1/sca/providers/" + scaProviderKey + "/authenticate.xml", request, SpreedlyScaAuthenticationResponse.class);
+	}
 }
