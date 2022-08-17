@@ -110,7 +110,10 @@
 							<use>false</use>
 							<use>false</use>
 							<source>1.8</source>
-							<links><link>http://docs.oracle.com/javase/7/docs/api/</link>		                             <link>http://docs.oracle.com/javase/7/docs/api/</link></links>
+							<links>
+								<link>http://docs.oracle.com/javase/7/docs/api/</link>
+								<link>http://docs.oracle.com/javase/7/docs/api/</link>
+							</links>
 							<doclint>none</doclint>
 						</configuration>
 					</execution>
