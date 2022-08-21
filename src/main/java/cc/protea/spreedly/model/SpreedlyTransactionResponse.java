@@ -133,7 +133,7 @@ public class SpreedlyTransactionResponse implements SpreedlyErrorSetting {
 	@XmlElement(name = "challenge_url") public String challengeUrl;
 	
 	@XmlElement(name = "challenge_form") public String challengeForm;
-	
+
 	/**
 	 * @return Any positive whole number, for example 1234 = $12.34.
 	 */
