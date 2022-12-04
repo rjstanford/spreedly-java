@@ -1,14 +1,14 @@
 package cc.protea.spreedly.model;
 
 import javax.xml.bind.annotation.*;
-import java.util.Date;
 
 @XmlRootElement(name = "sca_provider")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SpreedlyScaProviderRequest {
 
 	@XmlElement(name = "merchant_profile_key") public String merchantProfileKey;
-	@XmlElement(name = "type") public String type ;
+	@XmlElement(name = "type") public String type;
+	@XmlElement(name = "sandbox") public boolean sandbox = false;
 	@XmlElement(name = "visa")
 	public SpreedlyVisaDetails visa;
 	@XmlElement(name = "mastercard")
@@ -30,6 +30,14 @@ public class SpreedlyScaProviderRequest {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public boolean getSandbox() {
+		return sandbox;
+	}
+
+	public void setSandbox(boolean sandbox) {
+		this.sandbox = sandbox;
 	}
 
 	public SpreedlyVisaDetails getVisa() {

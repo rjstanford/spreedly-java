@@ -6,14 +6,14 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SpreedlyMastercardDetails {
 
-	@XmlElement(name = "acquirer_bin") public Long acquirerBin;
+	@XmlElement(name = "acquirer_bin") public String acquirerBin;
 	@XmlElement(name = "merchant_url") public String merchantUrl;
 
-	public Long getAcquirerBin() {
+	public String getAcquirerBin() {
 		return acquirerBin;
 	}
 
-	public void setAcquirerBin(Long acquirerBin) {
+	public void setAcquirerBin(String acquirerBin) {
 		this.acquirerBin = acquirerBin;
 	}
 
