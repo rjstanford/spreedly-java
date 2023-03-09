@@ -1,13 +1,20 @@
 package cc.protea.spreedly.model.internal;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import cc.protea.spreedly.model.SpreedlyBorgunSpecificFields;
+import cc.protea.spreedly.model.SpreedlyGatewaySpecificFields;
+import cc.protea.spreedly.model.SpreedlyTransactionRequest;
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -46,4 +53,5 @@ public class SpreedlyTransactionResponseTest {
 		Assert.assertEquals("messages.transaction_succeeded", response.message.key);
 		Assert.assertEquals("Succeeded!", response.message.message);
 	}
+
 }

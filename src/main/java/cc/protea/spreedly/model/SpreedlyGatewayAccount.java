@@ -33,7 +33,7 @@ public class SpreedlyGatewayAccount {
 	@XmlElement(name = "updated_at") public Date updatedOn;
 	@XmlElement(name = "description") public String description;
 	public String mode;
-	public boolean sandbox;
+	@XmlElement(name = "sandbox") public Boolean sandbox;
 
 	public String getToken() {
 		return token;
